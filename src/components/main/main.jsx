@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 
 export const Main = ({ className, children }) => (
-  <main className={classNames('flex-fill', className)}>
+  <main className={classNames('flex-fill app-content d-flex justify-content-center align-items-center', className)}>
        {children}
   </main>
 );
