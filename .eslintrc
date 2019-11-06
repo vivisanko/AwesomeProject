@@ -1,0 +1,79 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb", "plugin:ramda/recommended"],
+  "plugins": ["ramda", "jest"],
+  "rules": {
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" }
+    ],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "react/jsx-curly-spacing": ["error", { "when": "never", "children": true }],
+    "react/jsx-curly-newline": ["error", { "multiline": "forbid", "singleline": "forbid" }],
+    "react/jsx-indent": ["error", 2, { "checkAttributes": true, "indentLogicalExpressions": true }],
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    "react/destructuring-assignment": 0,
+    "no-underscore-dangle": 0,
+    "lines-between-class-members": 0,
+    "implicit-arrow-linebreak": 0,
+    "jsx-a11y/label-has-for": 0,
+    "no-debugger": 1,
+    "comma-dangle": ["error", "always-multiline"],
+    "max-len": [
+      "error",
+      120,
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-mixed-operators": 0,
+    "no-confusing-arrow": 0,
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "import/no-extraneous-dependencies": 0,
+    "react/sort-comp": 2,
+    "react/jsx-one-expression-per-line": 0,
+    "no-array-constructor": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-no-bind": [
+      2,
+      {
+        "ignoreRefs": true
+      }
+    ],
+    "jest/no-disabled-tests": 2,
+    "jest/expect-expect": 2,
+    "jest/no-focused-tests": 2,
+    "jest/no-identical-title": 2,
+    "jest/no-jest-import": 2,
+    "jest/valid-expect-in-promise": 2,
+    "jest/valid-describe": 2,
+    "jest/prefer-to-have-length": 2,
+    "jest/prefer-to-be-undefined": 2,
+    "jest/prefer-to-be-null": 2,
+    "jest/valid-expect": 2,
+    "jest/consistent-test-it": [
+      2,
+      {
+        "fn": "test",
+        "withinDescribe": "test"
+      }
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  }
+}

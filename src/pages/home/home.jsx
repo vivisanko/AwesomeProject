@@ -9,12 +9,11 @@ import './home.scss';
 export const Home = () => (
   <Fragment>
     <Helmet>
-        <title>Awesome avocado</title>
-        <link rel='canonical' href='http://localhost:3000/' />
+      <title key="title">metaInfo.title</title>,
+      <meta key="description" name="description" content="metaInfo.description" />
+      <meta key="keywords" name="keywords" content="metaInfo.keywords" />,
     </Helmet>
-    <Main className="home">
-      {Math.round(Math.random())?"tomato?":"avocado?"}
-    </Main>
+    <Main className="home">{Math.round(Math.random()) ? 'tomato?' : 'avocado?'}</Main>
   </Fragment>
 );
 

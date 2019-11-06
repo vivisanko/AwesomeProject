@@ -7,12 +7,13 @@ import * as serviceWorker from './serviceWorker';
 import './index.scss';
 
 ReactDOM.render(
-    <BrowserRouter basename="/AwesomeProject">
-        <HelmetProvider>
-           <App />
-        </HelmetProvider>
-    </BrowserRouter>
-, document.getElementById('root'));
+  <BrowserRouter basename="/AwesomeProject">
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  </BrowserRouter>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
