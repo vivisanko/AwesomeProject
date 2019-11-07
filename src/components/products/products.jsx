@@ -9,9 +9,13 @@ import tomato from '../../components/icons/tomato.svg';
 export const Products = ({ children, handleClick }) => (
   <header className="app-header">
     <div className="d-flex flex-column flex-sm-row justify-content-around align-items-center py-4 w-100">
-      <img src={avocado} className="app-logo py-4" alt="logo" />
+      <div data-name="avocado" tabIndex="0" role="button" onClick={handleClick} onKeyPress={handleClick}>
+        <img src={avocado} className="app-logo py-4" alt="logo" />
+      </div>
       <div className="app-header-child">{children}</div>
-      <img src={tomato} className="app-logo py-4" alt="logo" />
+      <div data-name="tomato" tabIndex="0" role="button" onClick={handleClick} onKeyPress={handleClick}>
+        <img src={tomato} className="app-logo py-4" alt="logo" />
+      </div>
     </div>
   </header>
 );

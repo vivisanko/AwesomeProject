@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 // import { Helmet } from 'react-helmet-async';
 // import classNames from 'classnames';
@@ -25,14 +25,40 @@ countdownRenderer.propTypes = {
   seconds: PropTypes.string.isRequired
 };
 
-export const ForeignLand = () => (
-  <Fragment>
-    {/* <HeadHelmet page="GAME" /> */}
-    <Products>
-      <Countdown date={Date.now() + PLAY_TIME} renderer={countdownRenderer} />
-    </Products>
-    <Main className="foreign-land">{Math.round(Math.random()) ? 'tomato?' : 'avocado?'}</Main>
-  </Fragment>
-);
+export class ForeignLand extends Component {
+  state = {
+    score: 0,
+    name: '',
+    startDate: 0
+  };
+  componentDidMount() {
+    this.setState({ startDate: Date.now() });
+  }
+
+  handleClick = ({
+    currentTarget: {
+      dataset: { name }
+    }
+  }) => {
+    // const item = event.currentTarget;
+    console.log('name', name);
+    this.setState({ name: name });
+  };
+
+  render() {
+    const { startDate } = this.state;
+    return (
+      <Fragment>
+        {/* <HeadHelmet page="GAME" /> */}
+        <Products handleClick={this.handleClick}>
+          <Countdown date={startDate + PLAY_TIME} renderer={countdownRenderer} />
+        </Products>
+        <Main className={Math.round(Math.random()) ? 'bg-tomato' : 'bg-yellowgreen'}>
+          {Math.round(Math.random()) ? 'tomato?' : 'avocado?'}
+        </Main>
+      </Fragment>
+    );
+  }
+}
 
 export default ForeignLand;

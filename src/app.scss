@@ -2,6 +2,17 @@
   text-align: center;
   min-height: 100vh;
 }
+[role='button'] {
+  cursor: pointer;
+  outline: 0;
+
+  &.disabled {
+    cursor: default;
+  }
+  &:focus {
+    outline: none;
+  }
+}
 
 .app-logo {
   height: 40vmin;
@@ -40,4 +51,12 @@
 .app-content {
   color: #282c34;
   font-size: calc(10px + 2vmin);
+}
+
+.bg-tomato {
+  background-color: tomato;
+}
+
+.bg-yellowgreen {
+  background-color: yellowgreen;
 }
