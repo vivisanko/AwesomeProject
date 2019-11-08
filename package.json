@@ -2,10 +2,12 @@
   "name": "awesome-project",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vivisanko.github.io/AwesomeProject/",
   "dependencies": {
     "babel-eslint": "^10.0.3",
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
+    "gh-pages": "^2.1.1",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
@@ -21,6 +23,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
