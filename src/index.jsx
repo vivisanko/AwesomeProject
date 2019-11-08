@@ -7,11 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import './index.scss';
 
 ReactDOM.render(
-  <BrowserRouter basename="/AwesomeProject">
-    <HelmetProvider>
+  <HelmetProvider>
+    <BrowserRouter basename="/AwesomeProject">
       <App />
-    </HelmetProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </HelmetProvider>,
   document.getElementById('root')
 );
 

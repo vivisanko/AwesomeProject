@@ -6,8 +6,10 @@
   cursor: pointer;
   outline: 0;
 
-  &.disabled {
+  &[disabled] {
     cursor: default;
+    opacity: 0.4;
+    pointer-events: none;
   }
   &:focus {
     outline: none;
@@ -16,6 +18,9 @@
 
 .app-logo {
   height: 40vmin;
+  &-small {
+    height: 25vmin;
+  }
 }
 
 .app-header {

@@ -2,18 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-
 export const Main = ({ className, children }) => (
-  <main className={classNames('flex-fill app-content d-flex justify-content-center align-items-center', className)}>
-       {children}
-  </main>
+  <main className={classNames('flex-fill app-content d-flex align-items-center', className)}>{children}</main>
 );
 
 Main.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 Main.defaultProps = {
-  className: '',
+  className: ''
 };
