@@ -5,6 +5,20 @@ import { PAGE_NAMES } from '../../constants';
 
 const { GAME, PAGE_NOT_FOUND } = PAGE_NAMES;
 
+const APPLE_TOUCH_ICON_SIZES = [
+  '57x57',
+  '60x60',
+  '72x72',
+  '76x76',
+  '114x114',
+  '120x120',
+  '144x144',
+  '152x152',
+  '180x180'
+];
+
+const ICON_SIZES = ['32x32', '96x96', '16x16'];
+
 const metaInfoDefault = {
   title: 'Awesome products',
   description: 'Check what your brain sees',
@@ -49,23 +63,17 @@ export const HeadHelmet = ({ page }) => {
       <title key="title">{title}</title>,
       <meta key="description" name="description" content={description} />
       <meta key="keywords" name="keywords" content={keywords} />
-      <link rel="shortcut icon" href={`.${image}favicon.ico`}></link>
-      <link rel="apple-touch-icon" sizes="57x57" href={`.${image}apple-icon-57x57.png`} />
-      <link rel="apple-touch-icon" sizes="60x60" href={`.${image}apple-icon-60x60.png`} />
-      <link rel="apple-touch-icon" sizes="72x72" href={`.${image}apple-icon-72x72.png`} />
-      <link rel="apple-touch-icon" sizes="76x76" href={`.${image}apple-icon-76x76.png`} />
-      <link rel="apple-touch-icon" sizes="114x114" href={`.${image}apple-icon-114x114.png`} />
-      <link rel="apple-touch-icon" sizes="120x120" href={`.${image}apple-icon-120x120.png`} />
-      <link rel="apple-touch-icon" sizes="144x144" href={`.${image}apple-icon-144x144.png`} />
-      <link rel="apple-touch-icon" sizes="152x152" href={`.${image}apple-icon-152x152.png`} />
-      <link rel="apple-touch-icon" sizes="180x180" href={`.${image}apple-icon-180x180.png`} />
-      <link rel="icon" type="image/png" sizes="192x192" href={`.${image}android-icon-192x192.png`} />
-      <link rel="icon" type="image/png" sizes="32x32" href={`.${image}tomato/favicon-32x32.png`} />
-      <link rel="icon" type="image/png" sizes="96x96" href={`.${image}favicon-96x96.png`} />
-      <link rel="icon" type="image/png" sizes="16x16" href={`.${image}favicon-16x16.png`} />
+      <link rel="shortcut icon" href={`./${image}favicon.ico`}></link>
+      {APPLE_TOUCH_ICON_SIZES.map(size => (
+        <link rel="apple-touch-icon" sizes={size} href={`./${image}apple-icon-${size}.png`} />
+      ))}
+      <link rel="icon" type="image/png" sizes="192x192" href={`./${image}android-icon-192x192.png`} />
+      {ICON_SIZES.map(size => (
+        <link rel="icon" type="image/png" sizes={size} href={`./${image}favicon-${size}.png`} />
+      ))}
       <link rel="manifest" href="/manifest.json" />
       <meta name="msapplication-TileColor" content="#ffffff" />
-      <meta name="msapplication-TileImage" content={`.${image}ms-icon-144x144.png`} />
+      <meta name="msapplication-TileImage" content={`./${image}ms-icon-144x144.png`} />
       <meta name="theme-color" content="#ffffff" />
       {canonical && <link rel="canonical" href={canonical} />}
     </Helmet>
