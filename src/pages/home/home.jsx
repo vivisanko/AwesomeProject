@@ -15,7 +15,7 @@ export const Home = () => (
     <Main className="home flex-column justify-content-center">
       <div>Pay attention, choose what you read</div>
       <Link className="text-white my-4" to="/game">
-        Color like tomato or avocado?
+        Vegetable color like tomato or avocado?
       </Link>
     </Main>
   </Fragment>
