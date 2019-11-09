@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/AwesomeProject/static/css/main.d5ef0616.chunk.css",
-    "main.js": "/AwesomeProject/static/js/main.ae070fd0.chunk.js",
-    "main.js.map": "/AwesomeProject/static/js/main.ae070fd0.chunk.js.map",
+    "main.css": "/AwesomeProject/static/css/main.cd37d8cf.chunk.css",
+    "main.js": "/AwesomeProject/static/js/main.55d64af5.chunk.js",
+    "main.js.map": "/AwesomeProject/static/js/main.55d64af5.chunk.js.map",
     "runtime-main.js": "/AwesomeProject/static/js/runtime-main.1b7b68ac.js",
     "runtime-main.js.map": "/AwesomeProject/static/js/runtime-main.1b7b68ac.js.map",
-    "static/js/2.afe8dee0.chunk.js": "/AwesomeProject/static/js/2.afe8dee0.chunk.js",
-    "static/js/2.afe8dee0.chunk.js.map": "/AwesomeProject/static/js/2.afe8dee0.chunk.js.map",
+    "static/js/2.5ef47cfc.chunk.js": "/AwesomeProject/static/js/2.5ef47cfc.chunk.js",
+    "static/js/2.5ef47cfc.chunk.js.map": "/AwesomeProject/static/js/2.5ef47cfc.chunk.js.map",
     "index.html": "/AwesomeProject/index.html",
-    "precache-manifest.765d09034e9ff1c882afc8eeaf878145.js": "/AwesomeProject/precache-manifest.765d09034e9ff1c882afc8eeaf878145.js",
+    "precache-manifest.50d6ee47a8eb5a4d833520edcecef6ae.js": "/AwesomeProject/precache-manifest.50d6ee47a8eb5a4d833520edcecef6ae.js",
     "service-worker.js": "/AwesomeProject/service-worker.js",
-    "static/css/main.d5ef0616.chunk.css.map": "/AwesomeProject/static/css/main.d5ef0616.chunk.css.map",
+    "static/css/main.cd37d8cf.chunk.css.map": "/AwesomeProject/static/css/main.cd37d8cf.chunk.css.map",
     "static/media/avocado.svg": "/AwesomeProject/static/media/avocado.527a4343.svg",
     "static/media/tomato.svg": "/AwesomeProject/static/media/tomato.99c7a9da.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1b7b68ac.js",
-    "static/js/2.afe8dee0.chunk.js",
-    "static/css/main.d5ef0616.chunk.css",
-    "static/js/main.ae070fd0.chunk.js"
+    "static/js/2.5ef47cfc.chunk.js",
+    "static/css/main.cd37d8cf.chunk.css",
+    "static/js/main.55d64af5.chunk.js"
   ]
 }
