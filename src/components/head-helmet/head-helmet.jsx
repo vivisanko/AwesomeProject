@@ -21,9 +21,9 @@ const ICON_SIZES = ['32x32', '96x96', '16x16'];
 
 const metaInfoDefault = {
   title: 'Awesome products',
-  description: 'Check what your brain sees',
-  keywords: 'brain',
-  canonical: 'http://localhost:3000/',
+  description: 'How to develop cognitive abilities with avocado and tomato',
+  keywords: 'brain, cognitive abilities, Stroop effect',
+  canonical: 'https://vivisanko.github.io/AwesomeProject/',
   currentUrl: '',
   pageType: 'website',
   image: 'avocado/'
@@ -31,7 +31,7 @@ const metaInfoDefault = {
 
 const metaInfoGame = {
   title: 'Awesome products game',
-  description: 'Pay attention, choose what you read',
+  description: 'In this game you match vegetables and fruits to color',
   keywords: 'play, tomato, avocado',
   canonical: '',
   image: 'tomato/'
@@ -40,7 +40,7 @@ const metaInfoGame = {
 const metaInfoNotFoundPage = {
   title: 'Not found page in awesome products',
   description: 'go to main page',
-  keywords: 'play, tomato, avocado, not found, ',
+  keywords: 'tomato, avocado, not found, ',
   canonical: '',
   currentUrl: '',
   pageType: 'website',
