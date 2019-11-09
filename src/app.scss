@@ -23,20 +23,6 @@
   }
 }
 
-.app-header {
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  min-height: 50vh;
-  &-child {
-    min-width: 130px;
-  }
-}
-
 .app-link {
   &-tomato {
     color: tomato;
@@ -53,9 +39,18 @@
   }
 }
 
+.app-button {
+  min-width: 100px;
+  outline: 0;
+  &:focus {
+    outline: none;
+  }
+}
+
 .app-content {
   color: #282c34;
   font-size: calc(10px + 2vmin);
+  height: 40vh;
 }
 
 .bg-tomato {

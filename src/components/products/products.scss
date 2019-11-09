@@ -1,0 +1,14 @@
+.products {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  min-height: 50vh;
+  &-child {
+    min-width: 130px;
+    min-height: 54px;
+  }
+}

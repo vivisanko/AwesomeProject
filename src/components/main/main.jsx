@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export const Main = ({ className, children }) => (
-  <main className={classNames('flex-fill app-content d-flex align-items-center', className)}>{children}</main>
+  <main className={classNames('app-content d-flex align-items-center', className)}>{children}</main>
 );
 
 Main.propTypes = {

@@ -25,12 +25,6 @@ countdownRenderer.propTypes = {
 
 const ConsignmentUI = ({ endDate, productName, score, handleClick, isDisabled }) => (
   <Fragment>
-    <Products handleClick={handleClick} isDisabled={isDisabled} isWithTitle={true}>
-      <Fragment>
-        <Countdown date={endDate} renderer={countdownRenderer} />
-        <div className="score-box d-flex justify-content-center align-items-center rounded mx-auto mt-4">{score}</div>
-      </Fragment>
-    </Products>
     <Main
       className={classNames('bg-tomato flex-column justify-content-start', {
         'bg-yellowgreen': Math.round(Math.random())
@@ -41,6 +35,12 @@ const ConsignmentUI = ({ endDate, productName, score, handleClick, isDisabled })
       </Link>
       <div className="align-items-center d-flex flex-grow-1 pb-3">{productName}</div>
     </Main>
+    <div className="score-box position-absolute d-flex justify-content-center align-items-center rounded mt-2 mr-2 text-white">
+      {score}
+    </div>
+    <Products handleClick={handleClick} isDisabled={isDisabled} isWithTitle={true}>
+      <Countdown date={endDate} renderer={countdownRenderer} />
+    </Products>
   </Fragment>
 );
 

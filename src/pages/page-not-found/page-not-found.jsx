@@ -11,7 +11,7 @@ import './page-not-found.scss';
 export const PageNotFound = () => (
   <Fragment>
     <HeadHelmet page={PAGE_NAMES.PAGE_NOT_FOUND} />
-    <Main className="page-not-found flex-column justify-content-center">
+    <Main className="page-not-found flex-column justify-content-center vh-100">
       <div className="text-white">
         <img src={avocado} className="app-logo-small py-4 px-1" alt="avocado" />
         <span className="px-4">not found</span>

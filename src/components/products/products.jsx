@@ -4,11 +4,13 @@ import avocado from '../../components/icons/avocado.svg';
 import tomato from '../../components/icons/tomato.svg';
 import { PRODUCTS } from '../../constants';
 
+import './products.scss';
+
 const { TOMATO, AVOCADO } = PRODUCTS;
 
 export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => (
-  <header className="app-header">
-    <div className="d-flex flex-column flex-sm-row justify-content-around align-items-center py-4 w-100">
+  <div className="products flex-fill">
+    <div className="d-flex flex-column flex-sm-row justify-content-around align-items-center w-100 position-relative">
       <div
         className="position-relative"
         data-name={AVOCADO}
@@ -18,10 +20,10 @@ export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => 
         onKeyPress={handleClick}
         disabled={isDisabled}
       >
-        {isWithTitle && <div className="position-absolute app-link-tomato">green like</div>}
-        <img src={avocado} className="app-logo py-4 px-1" alt="avocado" />
+        {isWithTitle && <div className="position-absolute app-link-tomato">green</div>}
+        <img src={avocado} className="app-logo py-2 px-1" alt="avocado" />
       </div>
-      <div className="app-header-child my-4">{children}</div>
+      <div className="products-child my-2">{children}</div>
       <div
         className="position-relative"
         data-name={TOMATO}
@@ -31,11 +33,11 @@ export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => 
         onKeyPress={handleClick}
         disabled={isDisabled}
       >
-        {isWithTitle && <div className="position-absolute app-link-yellowgreen">red like</div>}
-        <img src={tomato} className="app-logo py-4 px-1" alt="tomato" />
+        {isWithTitle && <div className="position-absolute app-link-yellowgreen">red</div>}
+        <img src={tomato} className="app-logo py-2 px-1" alt="tomato" />
       </div>
     </div>
-  </header>
+  </div>
 );
 
 Products.propTypes = {
