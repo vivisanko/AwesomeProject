@@ -6,9 +6,42 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  min-height: 50vh;
   &-child {
     min-width: 130px;
     min-height: 54px;
+  }
+
+  .products-container {
+   flex-direction: column;
+   @media (min-width: 568px) {
+    flex-direction: row;
+      &.bottom-products-padding {
+        padding-bottom: calc(34px + 6vmin);
+      }
+    }
+  }
+
+  .products-title {
+    right: 90%;
+    position: absolute;
+    @media (min-width: 568px) {
+        right: 0;
+        position: relative;
+    }
+  }
+
+  .image-container {
+    height: 40vmin;
+    width: 40vmin;
+  }
+}
+
+
+
+
+.app-logo {
+  height: 35vmin;
+  &-small {
+    height: 25vmin;
   }
 }

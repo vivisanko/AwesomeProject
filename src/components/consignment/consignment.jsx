@@ -26,14 +26,15 @@ countdownRenderer.propTypes = {
 const ConsignmentUI = ({ endDate, productName, score, handleClick, isDisabled }) => (
   <Fragment>
     <Main
-      className={classNames('bg-tomato flex-column justify-content-start', {
+      className={classNames('bg-tomato flex-column justify-content-between', {
         'bg-yellowgreen': Math.round(Math.random())
       })}
     >
       <Link className="text-white" to="/">
         go home
       </Link>
-      <div className="align-items-center d-flex flex-grow-1 pb-3">{productName}</div>
+      <div className="align-items-center d-flex flex-grow-1 app-title">{productName}</div>
+      <div>match object to its color</div>
     </Main>
     <div className="score-box position-absolute d-flex justify-content-center align-items-center rounded mt-2 mr-2 text-white">
       {score}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import avocado from '../../components/icons/avocado.svg';
 import tomato from '../../components/icons/tomato.svg';
 import { PRODUCTS } from '../../constants';
@@ -10,7 +11,12 @@ const { TOMATO, AVOCADO } = PRODUCTS;
 
 export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => (
   <div className="products flex-fill">
-    <div className="d-flex flex-column flex-sm-row justify-content-around align-items-center w-100 position-relative">
+    <div
+      className={classNames(
+        'products-container d-flex justify-content-around align-items-center w-100 position-relative',
+        { 'bottom-products-padding': isWithTitle }
+      )}
+    >
       <div
         className="position-relative"
         data-name={AVOCADO}
@@ -20,8 +26,10 @@ export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => 
         onKeyPress={handleClick}
         disabled={isDisabled}
       >
-        {isWithTitle && <div className="position-absolute app-link-tomato">green</div>}
-        <img src={avocado} className="app-logo py-2 px-1" alt="avocado" />
+        <div className="image-container py-2 px-1 d-flex flex-column">
+          {isWithTitle && <div className="app-link-tomato products-title app-title pb-2 pb-sm-4 ">green</div>}
+          <img src={avocado} className="app-logo" alt="avocado" />
+        </div>
       </div>
       <div className="products-child my-2">{children}</div>
       <div
@@ -33,8 +41,10 @@ export const Products = ({ children, handleClick, isDisabled, isWithTitle }) => 
         onKeyPress={handleClick}
         disabled={isDisabled}
       >
-        {isWithTitle && <div className="position-absolute app-link-yellowgreen">red</div>}
-        <img src={tomato} className="app-logo py-2 px-1" alt="tomato" />
+        <div className="image-container py-2 px-1 d-flex flex-column">
+          {isWithTitle && <div className="app-link-yellowgreen products-title app-title pb-2 pb-sm-4">red</div>}
+          <img src={tomato} className="app-logo" alt="tomato" />
+        </div>
       </div>
     </div>
   </div>

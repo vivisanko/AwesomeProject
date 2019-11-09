@@ -1,6 +1,7 @@
 .app {
   text-align: center;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 [role='button'] {
   cursor: pointer;
@@ -13,13 +14,6 @@
   }
   &:focus {
     outline: none;
-  }
-}
-
-.app-logo {
-  height: 40vmin;
-  &-small {
-    height: 25vmin;
   }
 }
 
@@ -59,4 +53,9 @@
 
 .bg-yellowgreen {
   background-color: yellowgreen;
+}
+
+.app-title {
+  font-size: calc(10px + 6vmin);
+
 }
