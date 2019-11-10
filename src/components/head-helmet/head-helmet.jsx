@@ -30,7 +30,7 @@ const metaInfoDefault = {
 };
 
 const metaInfoGame = {
-  title: 'Awesome products game',
+  title: 'Awesome game',
   description: 'In this game you match vegetables and fruits to color',
   keywords: 'play, tomato, avocado',
   canonical: '',
