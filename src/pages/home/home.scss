@@ -1,4 +1,20 @@
 .home {
   //  background-color: yellowgreen;
   background-color: #09d3ac;
+  color: white;
+  font-size: calc(10px + 2vmin);
+
+
+  &-dark{
+    background-color: #282c34;
+  }
+
+  &-second-case {
+    background-color: #282c34;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+  }
 }

@@ -5,7 +5,7 @@ import { PRODUCTS, LIKE_PRODUCT_COLOR, PLAY_TIME } from '../../constants';
 
 const { AVOCADO, TOMATO } = PRODUCTS;
 
-export class ConsignmentCore extends Component {
+export class ConsignmentTomatoAvocadoCore extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired
   };

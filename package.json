@@ -18,7 +18,8 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "reactstrap": "^8.1.1"
+    "reactstrap": "^8.1.1",
+    "rxjs": "^6.5.3"
   },
   "scripts": {
     "start": "react-scripts start",

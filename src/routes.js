@@ -1,6 +1,7 @@
 import { PAGE_NAMES } from './constants';
 import { Home } from './pages/home/home';
-import { Game } from './pages/game/game';
+import { GameTomatoAvocado } from './pages/game-tomato-avocado/game-tomato-avocado';
+import { GameWhoYouAre } from './pages/game-who-you-are/game-who-you-are';
 import { PageNotFound } from './pages/page-not-found/page-not-found';
 
 export const routes = [
@@ -11,11 +12,18 @@ export const routes = [
     page: PAGE_NAMES.HOME
   },
   {
-    path: '/game',
+    path: '/game-tomato-avocado',
     exact: true,
     noFooter: true,
-    component: Game,
-    page: PAGE_NAMES.GAME
+    component: GameTomatoAvocado,
+    page: PAGE_NAMES.GAME_TOMATO_AVOCADO
+  },
+  {
+    path: '/game-who-you-are',
+    exact: true,
+    noFooter: true,
+    component: GameWhoYouAre,
+    page: PAGE_NAMES.GAME_WHO_YOU_ARE
   },
   {
     path: '*',

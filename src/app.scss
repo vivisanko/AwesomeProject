@@ -21,15 +21,15 @@
   &-tomato {
     color: tomato;
     &:hover {
-    color:yellowgreen;
+      color: yellowgreen;
     }
   }
 
   &-yellowgreen {
     color: yellowgreen;
     &:hover {
-      color:tomato;
-      }
+      color: tomato;
+    }
   }
 }
 
@@ -55,7 +55,14 @@
   background-color: yellowgreen;
 }
 
+.bg-dark {
+    background-color: #282c34;
+}
+
+.text-yellowgreen {
+  color: yellowgreen;
+}
+
 .app-title {
   font-size: calc(10px + 6vmin);
-
 }

@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Countdown from 'react-countdown-now';
 import { withCoreComponent } from '../../hocs/with-core-component';
-import { ConsignmentCore } from '../../core/consignment/consignment';
-import { Products } from '../../components/products/products';
-import { Main } from '../../components/main/main';
+import { ConsignmentTomatoAvocadoCore } from '../../core/consignment-tomato-avocado/consignment-tomato-avocado';
+import { Products } from '../products/products';
+import { Main } from '../main/main';
 
-import './consignment.scss';
+import './consignment-tomato-avocado.scss';
 
 const COUNTDOWN_CLASSES = 'box d-flex justify-content-center align-items-center rounded mx-1';
 
@@ -23,7 +23,7 @@ countdownRenderer.propTypes = {
   seconds: PropTypes.string.isRequired
 };
 
-const ConsignmentUI = ({ endDate, productName, score, handleClick, isDisabled }) => (
+const ConsignmentTomatoAvocadoUI = ({ endDate, productName, score, handleClick, isDisabled }) => (
   <Fragment>
     <Main
       className={classNames('bg-tomato flex-column justify-content-between', {
@@ -45,7 +45,7 @@ const ConsignmentUI = ({ endDate, productName, score, handleClick, isDisabled })
   </Fragment>
 );
 
-ConsignmentUI.propTypes = {
+ConsignmentTomatoAvocadoUI.propTypes = {
   endDate: PropTypes.number.isRequired,
   productName: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
@@ -53,4 +53,4 @@ ConsignmentUI.propTypes = {
   isDisabled: PropTypes.bool.isRequired
 };
 
-export const Consignment = withCoreComponent(ConsignmentCore, ConsignmentUI);
+export const ConsignmentTomatoAvocado = withCoreComponent(ConsignmentTomatoAvocadoCore, ConsignmentTomatoAvocadoUI);

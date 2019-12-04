@@ -7,7 +7,7 @@ import './app.scss';
 
 const App = () => (
   <Fragment>
-    <div className="app d-flex flex-column">
+    <div className="app d-flex flex-column justify-content-between">
       <Switch>{renderRoutes(routes)}</Switch>
     </div>
   </Fragment>
