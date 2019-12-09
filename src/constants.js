@@ -13,7 +13,13 @@ export const PAGE_NAMES = {
 export const STEPS = {
   START: 0,
   ACT: 1,
-  END: 2,
+  PLAY: 2,
+  END: 3,
+}
+
+export const TYPES = {
+  GENERAL: 'general',
+  ADDITIONAL: 'additional',
 }
 
 
@@ -39,3 +45,9 @@ export const LIKE_PRODUCT_COLOR = {
 };
 
 export const PLAY_TIME = 30000;
+
+export const ACTION_MESSAGES = {
+  NOT_ENOUGH_PLAYERS: 'you need at least two players to play',
+  START: 'if all the players in the assembly start the game',
+  WAIT: 'wait, everybody should come up with nicknames',
+}
