@@ -11,7 +11,7 @@ import './consignment-who-you-are.scss';
 
 
 
-const ConsignmentWhoYouAreUI = ({step, theme, actions, opponentName, numberOfPlayers, handleChange, handleButtonClick}) => (
+const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, question, opponentName, numberOfPlayers, handleChange, handleButtonClick}) => (
   <Fragment>
     <Main
       className='bg-yellowgreen flex-column justify-content-between'
@@ -21,7 +21,7 @@ const ConsignmentWhoYouAreUI = ({step, theme, actions, opponentName, numberOfPla
       </Link>
       <div className="pb-4 px-2">
        {step!==STEPS.START && <div className="font-weight-bold">Theme: {theme}</div>}
-        <div className="">Number of players: {numberOfPlayers}</div>
+        <div className="">{numberOfPlayers ? <span>Number of players: {numberOfPlayers}</span> : <span>The game has already begun, try again later</span>}</div>
 
         <div>
           Guess who you are. Ask questions that can be answered “yes” or “no” to understand what nickname your opponent came up with for you
@@ -39,9 +39,24 @@ const ConsignmentWhoYouAreUI = ({step, theme, actions, opponentName, numberOfPla
     }
     {step===STEPS.ACT &&
         <Fragment>
-          <label htmlFor="opponentName">Make a nickname for your opponent <input className="my-2" type="text" name="opponentName" value={opponentName} onChange={handleChange}/></label>
+          <label htmlFor="opponentName">Make a nickname for your opponent <input data-name='opponentName' className="my-2" type="text" name="opponentName" value={opponentName} onChange={handleChange}/></label>
           <Button disabled={opponentName===''} className="ml-2 app-button my-4" onClick={handleButtonClick} outline >
             Apply
+          </Button>
+        </Fragment>
+    }
+    {playStory.map(({timestamp, person, message}) => (
+      <div key={timestamp}>
+        <span>{new Date(timestamp).toDateString()}</span>
+        <span>{person}:</span>
+        <span>{message}</span>
+      </div>
+    ))}
+    {step===STEPS.PLAY && isActive &&
+        <Fragment>
+          <label htmlFor="question"><input data-name='question' className="my-2" type="text" name="question" value={question} onChange={handleChange}/></label>
+          <Button disabled={question===''} className="ml-2 app-button my-4" onClick={handleButtonClick} outline >
+            Ask
           </Button>
         </Fragment>
     }
