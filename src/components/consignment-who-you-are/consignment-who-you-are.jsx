@@ -2,16 +2,18 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'reactstrap';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { withCoreComponent } from '../../hocs/with-core-component';
 import { ConsignmentWhoYouAreCore } from '../../core/consignment-who-you-are/consignment-who-you-are';
 import { Main } from '../main/main';
-import { STEPS } from '../../constants'
+import { STEPS } from '../../constants';
+import { InputBlock } from './input-block/input-block';
 import './consignment-who-you-are.scss';
 
 
 
-const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, question, opponentName, numberOfPlayers, handleChange, handleButtonClick}) => (
+const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, question, opponentName, numberOfPlayers, isShowYoNButtons, handleChange, handleButtonClick}) => (
   <Fragment>
     <Main
       className='bg-yellowgreen flex-column justify-content-between'
@@ -28,7 +30,15 @@ const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, ques
         </div>
       </div>
     </Main>
-    <div className="bg-dark text-white pt-3 pb-4 info-board">{actions}</div>
+    <div className="bg-dark text-white pt-3 pb-4 info-board">{actions}
+    {step===STEPS.PLAY && isShowYoNButtons && !isActive &&
+    <Fragment>
+      <Button data-name="yes" className="mx-3 bool-button" onClick={handleButtonClick} outline>yes</Button>
+      <Button data-name="no" className="bool-button" onClick={handleButtonClick} outline>no</Button>
+    </Fragment>
+
+    }
+    </div>
     <div className="bg-dark text-white flex-grow-1 overflow-auto">
     {step===STEPS.START &&
         <Fragment>
@@ -38,27 +48,30 @@ const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, ques
         </Fragment>
     }
     {step===STEPS.ACT &&
-        <Fragment>
-          <label htmlFor="opponentName">Make a nickname for your opponent <input data-name='opponentName' className="my-2" type="text" name="opponentName" value={opponentName} onChange={handleChange}/></label>
-          <Button disabled={opponentName===''} className="ml-2 app-button my-4" onClick={handleButtonClick} outline >
-            Apply
-          </Button>
-        </Fragment>
+      <InputBlock
+        isStepAct={true}
+        isDisabled={opponentName===''}
+        inputValue={opponentName}
+        inputName='opponentName'
+        handleInputChange={handleChange}
+        onButtonClick={handleButtonClick}
+      />
     }
     {playStory.map(({timestamp, person, message}) => (
-      <div key={timestamp}>
-        <span>{new Date(timestamp).toDateString()}</span>
-        <span>{person}:</span>
-        <span>{message}</span>
+      <div key={timestamp} className="pl-4 pb-3 text-left">
+        <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
+        <div className="">{message}</div>
       </div>
     ))}
     {step===STEPS.PLAY && isActive &&
-        <Fragment>
-          <label htmlFor="question"><input data-name='question' className="my-2" type="text" name="question" value={question} onChange={handleChange}/></label>
-          <Button disabled={question===''} className="ml-2 app-button my-4" onClick={handleButtonClick} outline >
-            Ask
-          </Button>
-        </Fragment>
+      <InputBlock
+        isStepAct={false}
+        isDisabled={question===''}
+        inputValue={question}
+        inputName='question'
+        handleInputChange={handleChange}
+        onButtonClick={handleButtonClick}
+      />
     }
     </div>
 

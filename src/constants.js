@@ -49,5 +49,8 @@ export const PLAY_TIME = 30000;
 export const ACTION_MESSAGES = {
   NOT_ENOUGH_PLAYERS: 'you need at least two players to play',
   START: 'if all the players in the assembly start the game',
-  WAIT: 'wait, everybody should come up with nicknames',
+  WAIT_START: 'wait, everybody should come up with nicknames',
+  ASK: 'you can ask',
+  ANSWER: 'answer the question',
+  WAIT: '...wait'
 }

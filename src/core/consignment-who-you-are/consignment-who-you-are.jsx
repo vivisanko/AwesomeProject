@@ -18,8 +18,8 @@ export class ConsignmentWhoYouAreCore extends Component {
     numberOfPlayers: 0,
     actions: '',
     playStory: [],
-    isShowMessage: true,
     isActive: false,
+    isShowYoNButtons: false,
     question: '',
   };
 
@@ -45,8 +45,8 @@ export class ConsignmentWhoYouAreCore extends Component {
     this.setState({ [item.dataset.name]: event.target.value });
   }
 
-  handleButtonClick = () => {
-    const {opponentName, theme, step, question, isActive} = this.state;
+  handleButtonClick = (event) => {
+    const {opponentName, theme, step, question, isActive, isShowYoNButtons} = this.state;
     console.log(`sent to server ${opponentName}`);
     if (step===STEPS.START) {
       if(!theme){
@@ -67,24 +67,33 @@ export class ConsignmentWhoYouAreCore extends Component {
     if (step===STEPS.PLAY && isActive){
       console.log('4');
       this.subject.next({step: STEPS.PLAY, message: question });
-      this.setState(prevState=>({question: '', isActive: false, playStory: prevState.playStory.concat({person: 'you', message: prevState.question, timestamp:Date.now()})}));
+      this.setState(prevState=>({question: '', playStory: prevState.playStory.concat({person: 'you', message: prevState.question, timestamp:Date.now()})}));
+    }
+    if (step===STEPS.PLAY && isShowYoNButtons){
+      console.log('5');
+      console.log('event.currentTarget.dataset.name', event.currentTarget.dataset.name);
+      const newMessage = event.currentTarget.dataset.name;
+      this.subject.next({step: STEPS.PLAY, message: newMessage });
+      this.setState(prevState=>({isShowYoNButtons: false, playStory: prevState.playStory.concat({person: 'you', message: newMessage, timestamp:Date.now()})}));
     }
 
   }
 
   createStepMessage = () => {
-    const {step, isShowMessage, numberOfPlayers} = this.state;
+    const {step, actions, numberOfPlayers} = this.state;
     console.log('here');
+    if (actions){
+      return actions
+    }
     if(step===STEPS.START && numberOfPlayers<2) {
       return ACTION_MESSAGES.NOT_ENOUGH_PLAYERS
     }
     if (step===STEPS.START) {
       return ACTION_MESSAGES.START
     }
-    if (step===STEPS.PLAY && isShowMessage){
-      return ACTION_MESSAGES.WAIT
+    if (step===STEPS.PLAY && !actions){
+      return ACTION_MESSAGES.WAIT_START
     }
-    return ''
   }
 
   changeStateAccordingServerMessage = (serverMsg) => {
@@ -94,7 +103,7 @@ export class ConsignmentWhoYouAreCore extends Component {
     const {type, message} = serverMsg;
 
     if (type===TYPES.GENERAL) {
-    this.setState({...message});
+    this.setState({...message, isShowYoNButtons: message.actions===ACTION_MESSAGES.ANSWER});
   } else {
     const {playStory} = this.state;
     console.log('message', message);
@@ -113,20 +122,21 @@ export class ConsignmentWhoYouAreCore extends Component {
 
 
   render() {
-    const { theme, step, opponentName, numberOfPlayers, actions, isActive, question, playStory } = this.state;
+    const { theme, step, opponentName, numberOfPlayers, isShowYoNButtons,isActive, question, playStory } = this.state;
     const { children } = this.props;
     const {handleChange, handleButtonClick} = this;
     return children({
       theme,
       step,
       playStory,
-      actions: actions || this.createStepMessage(),
+      actions: this.createStepMessage(),
       opponentName,
       handleChange,
       numberOfPlayers,
       handleButtonClick,
       isActive,
       question,
+      isShowYoNButtons,
     });
   }
 }
