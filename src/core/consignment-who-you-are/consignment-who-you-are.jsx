@@ -21,6 +21,8 @@ export class ConsignmentWhoYouAreCore extends Component {
     isActive: false,
     isShowYoNButtons: false,
     question: '',
+    winners: [],
+    personPlace: null,
   };
 
   componentDidMount() {
@@ -104,15 +106,22 @@ export class ConsignmentWhoYouAreCore extends Component {
 
     if (type===TYPES.GENERAL) {
     this.setState({...message, isShowYoNButtons: message.actions===ACTION_MESSAGES.ANSWER});
-  } else {
+    }
+    if (type===TYPES.ADDITIONAL){
     const {playStory} = this.state;
     console.log('message', message);
      const newPlayStory =  playStory.concat({...message});
      this.setState({playStory:newPlayStory});
      console.log('newPlayStory', newPlayStory);
-  }
-  console.log('serverMsg', serverMsg);
-
+    }
+    if(type===TYPES.FINAL){
+      const {winners} = this.state;
+    console.log('message in Final', message);
+    this.setState({
+      winners:winners.concat(JSON.parse(message.placeRating)),
+      personPlace: message.personPlace,
+      step: STEPS.END});
+    }
   }
 
   componentWillUnmount() {
@@ -122,7 +131,7 @@ export class ConsignmentWhoYouAreCore extends Component {
 
 
   render() {
-    const { theme, step, opponentName, numberOfPlayers, isShowYoNButtons,isActive, question, playStory } = this.state;
+    const { theme, step, opponentName, personPlace, numberOfPlayers, isShowYoNButtons,isActive, question, playStory, winners } = this.state;
     const { children } = this.props;
     const {handleChange, handleButtonClick} = this;
     return children({
@@ -137,6 +146,8 @@ export class ConsignmentWhoYouAreCore extends Component {
       isActive,
       question,
       isShowYoNButtons,
+      winners,
+      personPlace
     });
   }
 }

@@ -13,7 +13,21 @@ import './consignment-who-you-are.scss';
 
 
 
-const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, question, opponentName, numberOfPlayers, isShowYoNButtons, handleChange, handleButtonClick}) => (
+const ConsignmentWhoYouAreUI = ({
+  step,
+  theme,
+  playStory,
+  actions,
+  isActive,
+  question,
+  opponentName,
+  numberOfPlayers,
+  isShowYoNButtons,
+  handleChange,
+  handleButtonClick,
+  winners,
+  personPlace
+}) => (
   <Fragment>
     <Main
       className='bg-yellowgreen flex-column justify-content-between'
@@ -30,7 +44,7 @@ const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, ques
         </div>
       </div>
     </Main>
-    <div className="bg-dark text-white pt-3 pb-4 info-board">{actions}
+    <div className="text-white py-3 info-board position-relative">{actions}
     {step===STEPS.PLAY && isShowYoNButtons && !isActive &&
     <Fragment>
       <Button data-name="yes" className="mx-3 bool-button" onClick={handleButtonClick} outline>yes</Button>
@@ -39,40 +53,52 @@ const ConsignmentWhoYouAreUI = ({step, theme, playStory, actions, isActive, ques
 
     }
     </div>
-    <div className="bg-dark text-white flex-grow-1 overflow-auto">
-    {step===STEPS.START &&
-        <Fragment>
-          <Button disabled={numberOfPlayers<2} className="ml-2 app-button my-4" onClick={handleButtonClick} outline >
-          participate in the game
-          </Button>
-        </Fragment>
-    }
-    {step===STEPS.ACT &&
-      <InputBlock
-        isStepAct={true}
-        isDisabled={opponentName===''}
-        inputValue={opponentName}
-        inputName='opponentName'
-        handleInputChange={handleChange}
-        onButtonClick={handleButtonClick}
-      />
-    }
-    {playStory.map(({timestamp, person, message}) => (
-      <div key={timestamp} className="pl-4 pb-3 text-left">
-        <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
-        <div className="">{message}</div>
+    <div className="bg-dark text-white flex-grow-1 d-flex flex-column w-100 pb-5 overflow-auto">
+      <div className="mx-auto chat-board pt-4 px-3">
+
+        {step===STEPS.START &&
+            <Fragment>
+              <Button disabled={numberOfPlayers<2} className="app-button my-4" onClick={handleButtonClick} outline >
+              participate in the game
+              </Button>
+            </Fragment>
+        }
+        {step===STEPS.ACT &&
+          <InputBlock
+          isStepAct={true}
+          isDisabled={opponentName===''}
+          inputValue={opponentName}
+          inputName='opponentName'
+          handleInputChange={handleChange}
+          onButtonClick={handleButtonClick}
+          />
+        }
+        {step===STEPS.PLAY && playStory.map(({timestamp, person, message}) => (
+          <div key={timestamp} className="pt-3 text-left">
+            <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
+            <div className="">{message}</div>
+          </div>
+        ))}
+        {step===STEPS.PLAY && isActive &&
+          <InputBlock
+          isStepAct={false}
+          isDisabled={question===''}
+          inputValue={question}
+          inputName='question'
+          handleInputChange={handleChange}
+          onButtonClick={handleButtonClick}
+          />
+        }
+        {step===STEPS.END && winners.map((el,ind)=>(
+          <div key={ind}>
+            <div className={classNames({'font-weight-bold': personPlace!==null && ind===personPlace}, 'text-left d-flex')}>
+              <div className="pr-2 rating-index">{ind+1} &#45;</div>
+              <span>{el}</span>
+              {personPlace!==null && ind===personPlace && <span>&#45; you</span>}
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-    {step===STEPS.PLAY && isActive &&
-      <InputBlock
-        isStepAct={false}
-        isDisabled={question===''}
-        inputValue={question}
-        inputName='question'
-        handleInputChange={handleChange}
-        onButtonClick={handleButtonClick}
-      />
-    }
     </div>
 
   </Fragment>

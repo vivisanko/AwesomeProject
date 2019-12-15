@@ -1,7 +1,27 @@
 .info-board {
-  min-height: 64px;
+  min-height: 56px;
+  background-color: rgba(40,44,52,0.97);
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+    background-color: #282c34;
+    filter: blur(15px);
+  }
 }
 
 .bool-button {
-  min-width: 80px;
+  min-width: 70px;
+}
+
+.chat-board {
+  min-width: 320px;
+  max-width: 600px;
+}
+.rating-index {
+  min-width: 50px;
 }

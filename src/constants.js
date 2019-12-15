@@ -20,6 +20,7 @@ export const STEPS = {
 export const TYPES = {
   GENERAL: 'general',
   ADDITIONAL: 'additional',
+  FINAL: 'final'
 }
 
 
