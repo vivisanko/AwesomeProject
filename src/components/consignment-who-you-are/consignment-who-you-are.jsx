@@ -79,9 +79,9 @@ const ConsignmentWhoYouAreUI = ({
           <Fragment>
           {index===0 &&
           <div key={timestamp} className={classNames("pt-3 text-left")}>
-            <div className="d-flex flex-nowrap flex-grow-1 align-items-center">
-              <div>
-                <span className="pr-2 font-weight-bold">{person}</span>
+            <div className="d-flex flex-wrap flex-grow-1 align-items-center">
+              <div className="d-flex flex-wrap">
+                <span className="pr-2 text-wrap font-weight-bold">{person}</span>
                 <span className="text-muted">{moment(timestamp).format('LTS')}</span>
               </div>
             {step===STEPS.PLAY && isShowYoNButtons && !isActive &&
@@ -96,7 +96,10 @@ const ConsignmentWhoYouAreUI = ({
           }
           {index!==0 &&
           <div key={timestamp} className="pt-3 text-left">
-            <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
+            <div className="d-flex flex-wrap">
+              <span className="pr-2 font-weight-bold">{person}</span>
+              <span className="text-muted">{moment(timestamp).format('LTS')}</span>
+            </div>
             <div className="">{message}</div>
           </div>
           }
