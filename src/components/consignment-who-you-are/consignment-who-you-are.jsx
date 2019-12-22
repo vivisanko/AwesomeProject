@@ -44,15 +44,7 @@ const ConsignmentWhoYouAreUI = ({
         </div>
       </div>
     </Main>
-    <div className="text-white py-3 info-board position-relative">{actions}
-    {step===STEPS.PLAY && isShowYoNButtons && !isActive &&
-    <Fragment>
-      <Button data-name="yes" className="mx-3 bool-button" onClick={handleButtonClick} outline>yes</Button>
-      <Button data-name="no" className="bool-button" onClick={handleButtonClick} outline>no</Button>
-    </Fragment>
-
-    }
-    </div>
+    <div className="text-white py-3 info-board position-relative">{actions}</div>
     <div className="bg-dark text-white flex-grow-1 d-flex flex-column w-100 pb-5 overflow-auto">
       <div className="mx-auto chat-board pt-4 px-3">
 
@@ -73,12 +65,6 @@ const ConsignmentWhoYouAreUI = ({
           onButtonClick={handleButtonClick}
           />
         }
-        {step===STEPS.PLAY && playStory.map(({timestamp, person, message}) => (
-          <div key={timestamp} className="pt-3 text-left">
-            <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
-            <div className="">{message}</div>
-          </div>
-        ))}
         {step===STEPS.PLAY && isActive &&
           <InputBlock
           isStepAct={false}
@@ -89,6 +75,33 @@ const ConsignmentWhoYouAreUI = ({
           onButtonClick={handleButtonClick}
           />
         }
+        {step===STEPS.PLAY && playStory.map(({timestamp, person, message}, index) => (
+          <Fragment>
+          {index===0 &&
+          <div key={timestamp} className={classNames("pt-3 text-left")}>
+            <div className="d-flex flex-nowrap flex-grow-1 align-items-center">
+              <div>
+                <span className="pr-2 font-weight-bold">{person}</span>
+                <span className="text-muted">{moment(timestamp).format('LTS')}</span>
+              </div>
+            {step===STEPS.PLAY && isShowYoNButtons && !isActive &&
+            <div className="flex-shrink-0 py-2">
+              <Button data-name="yes" className="mx-3 bool-button" onClick={handleButtonClick} outline>yes</Button>
+              <Button data-name="no" className="bool-button" onClick={handleButtonClick} outline>no</Button>
+            </div>
+            }
+            </div>
+          <div className="">{message}</div>
+          </div>
+          }
+          {index!==0 &&
+          <div key={timestamp} className="pt-3 text-left">
+            <div><span className="pr-2 font-weight-bold">{person}</span><span className="text-muted">{moment(timestamp).format('LTS')}</span></div>
+            <div className="">{message}</div>
+          </div>
+          }
+          </Fragment>
+        ))}
         {step===STEPS.END && winners.map((el,ind)=>(
           <div key={ind}>
             <div className={classNames({'font-weight-bold': personPlace!==null && ind===personPlace}, 'text-left d-flex')}>

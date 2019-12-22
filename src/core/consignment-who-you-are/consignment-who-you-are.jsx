@@ -81,6 +81,11 @@ export class ConsignmentWhoYouAreCore extends Component {
 
   }
 
+  createPlayStory = () => {
+  const {playStory} = this.state;
+  return [...playStory].reverse();
+  }
+
   createStepMessage = () => {
     const {step, actions, numberOfPlayers} = this.state;
     console.log('here');
@@ -131,13 +136,13 @@ export class ConsignmentWhoYouAreCore extends Component {
 
 
   render() {
-    const { theme, step, opponentName, personPlace, numberOfPlayers, isShowYoNButtons,isActive, question, playStory, winners } = this.state;
+    const { theme, step, opponentName, personPlace, numberOfPlayers, isShowYoNButtons,isActive, question, winners } = this.state;
     const { children } = this.props;
     const {handleChange, handleButtonClick} = this;
     return children({
       theme,
       step,
-      playStory,
+      playStory: this.createPlayStory(),
       actions: this.createStepMessage(),
       opponentName,
       handleChange,
